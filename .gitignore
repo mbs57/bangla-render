@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Test output images
+test_outputs/
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Virtual environments
+venv/
+.venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary logs
+*.log
+
+
