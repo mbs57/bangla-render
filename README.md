@@ -1,35 +1,34 @@
-
-
 # 🇧🇩 bangla-render
 
 ### Bengali Text Rendering for Matplotlib & Seaborn (with full OpenType shaping)
 
 **bangla-render** is the first open-source Python library that enables fully correct **Bengali text rendering** inside Matplotlib and Seaborn.
 
-Matplotlib cannot shape Bengali text — it does not use HarfBuzz and cannot handle:
+Matplotlib cannot shape Bengali text — it does not use HarfBuzz and therefore fails with:
 
 * Matra (ি, ী, ু, ূ, ৃ)
 * Reph (র্)
-* Juktakkhor (জ্ঞ, ক্ষ, ত্ম, ন্দ …)
-* OpenType GSUB/GPOS shaping
+* Juktakkhor (জ্ঞ, ক্ষ, ন্দ, ত্ম, ন্ত …)
+* GSUB/GPOS OpenType shaping
 
-So Bengali titles, axis labels, and heatmap text appear **broken**.
+So Bengali titles, axis labels, annotations, and heatmap text become **broken, disjoint, or scrambled**.
 
-💡 **bangla-render fixes this entirely** by using **Qt’s HarfBuzz-based text engine**, converting shaped text into RGBA images, and inserting them into Matplotlib.
+💡 **bangla-render solves this completely.**
+It uses **Qt’s HarfBuzz engine** to shape Bengali correctly, renders it into an RGBA image, and overlays it into Matplotlib using `OffsetImage`, bypassing Matplotlib’s broken text renderer entirely.
 
 ---
 
 ## ✨ Features
 
-### ✔ Full and correct Bengali shaping
+### ✔ Full Bengali OpenType shaping
 
-* Complex conjuncts: ক্ষ, দ্ধ, ন্দ, জ্ঞ, ত্ম …
 * Correct matra placement
+* Proper conjunct formation
 * Reph, rafar, vowel signs
-* Multi-line paragraphs
-* UTF-8 / Unicode native (no ANSI/Bijoy hacks)
+* Multi-line paragraph shaping
+* True Unicode (no ANSI/Bijoy hacks)
 
-### ✔ Easy API for Matplotlib
+### ✔ High-level Matplotlib API
 
 ```
 br.set_bangla_title(ax, "বাংলা শিরোনাম")
@@ -38,120 +37,31 @@ br.set_bangla_ylabel(ax, "ওয়াই অক্ষ")
 br.text(ax, 0.5, 0.5, "মাঝখানে", coord="axes")
 ```
 
-### ✔ Heatmap & confusion matrix support
+### ✔ Heatmap and confusion-matrix support
 
 ```
 br.add_bangla_in_cell(ax, row, col, "খুশি", rows, cols)
 ```
 
-### ✔ Automatic layout handling
+### ✔ Automatic layout engine
 
-`apply_bangla_layout()` adjusts margins so nothing overlaps.
+`apply_bangla_layout()` adjusts margins so titles & labels never overlap.
 
 ### ✔ Works everywhere
 
 * Matplotlib
 * Seaborn
-* Windows / Linux / Mac
-* Jupyter Notebook / VS Code
+* Jupyter / VS Code
+* Windows, Mac, Linux
 * Any backend (Agg, Tk, Qt, etc.)
 
 ---
 
-## 🔥 Why This Library Exists
-
-Matplotlib cannot shape Indic scripts.
-Even with proper fonts, Bengali text becomes:
-
-* Disjoint
-* Out of order
-* Matra misplaced
-* Conjuncts broken
-* Unreadable
-
-Existing online solutions only support *very simple* words (e.g. ভয়, রাগ).
-They **fail** for real Bengali:
-
-* খুশি
-* শ্রদ্ধা
-* দৃষ্টিভঙ্গি
-* ব্যবস্থাপনা
-* হাস্যোজ্জ্বল
-* পর্যালোচনায়
-* Any paragraph
-
-Before **bangla-render**:
-
-* ❌ No PyPI library
-* ❌ No working shape engine
-* ❌ No support for heatmaps / confusion matrices
-* ❌ No API for Bengali title/xlabel/ylabel
-* ❌ No Unicode-complete solution
-
-People used hacks like:
-
-* PNG text pasted manually
-* Bijoy/ANSI legacy encoding
-* Broken rendering
-* Inconsistent positioning
-
-**bangla-render fills this gap completely.**
-
----
-
-## 🎯 Our Contribution
-
-### 1️⃣ Full Bengali shaping in Matplotlib for the first time
-
-Built using:
-
-* Qt → HarfBuzz shaping
-* QPainter → QImage
-* NumPy RGBA conversion
-* AnnotationBbox → Matplotlib overlay
-
-### 2️⃣ High-level Bengali plotting API
-
-A drop-in replacement for Matplotlib text functions:
-
-* Bangla title
-* Bangla xlabel
-* Bangla ylabel
-* Bangla annotation (`br.text`)
-* Heatmap cell text
-* Confusion matrix axis text
-
-### 3️⃣ Automatic layout engine
-
-`apply_bangla_layout()` prevents overlap and centers everything.
-
-### 4️⃣ Works with Seaborn
-
-Position-perfect Bengali text inside heatmap cells.
-
-### 5️⃣ Full test suite
-
-Tests:
-
-* Basic Bengali words
-* Complex juktakkhor
-* Paragraphs
-* Line plot
-* Heatmap
-* Confusion matrix
-* Before/after comparisons
-
-### 6️⃣ Unicode-compliant & beginner friendly
-
-Just install and use.
-
----
-
-## 🔍 Before / After Comparison
+## 🔍 Before & After Comparison
 
 ### Line Plot
 
-| Before (Broken)                        | After (Correct)                      |
+| Default Matplotlib                     | With bangla-render                   |
 | -------------------------------------- | ------------------------------------ |
 | ![before](assets/line_plot_before.png) | ![after](assets/line_plot_after.png) |
 
@@ -169,9 +79,97 @@ Just install and use.
 
 ---
 
+## 🔥 Why This Library Exists
+
+Matplotlib cannot shape Indic scripts.
+Even with Bangla fonts installed, it produces:
+
+* Disjoint characters
+* Wrong glyph order
+* Broken juktakkhor
+* Incorrect matra positioning
+
+Existing “solutions” only work for **very simple words** like ভয়, রাগ —
+but fail completely for:
+
+* খুশি
+* দৃষ্টিভঙ্গি
+* শ্রদ্ধা
+* ব্যবস্থাপনা
+* হাস্যোজ্জ্বল
+* পর্যালোচনায়
+* And any real paragraph
+
+Before **bangla-render**, there was:
+
+* No PyPI library
+* No correct Bengali shaping
+* No Seaborn heatmap support
+* No way to set Bengali xlabel/ylabel/title
+* No Unicode-safe method
+
+People relied on:
+
+* Bijoy/ANSI hacks
+* Exporting PNG text manually
+* Inconsistent positioning
+* Broken glyph rendering
+
+**bangla-render fills this gap for the first time.**
+
+---
+
+## 🎯 Our Contributions
+
+### 1️⃣ First fully working Bengali renderer for Matplotlib
+
+Using a complete pipeline:
+
+* Qt (PySide6)
+* HarfBuzz shaping
+* QPainter → QImage
+* NumPy array
+* Matplotlib `AnnotationBbox` overlay
+
+### 2️⃣ Easy-to-use Bengali plotting API
+
+Drop-in replacements:
+
+* Title
+* X-axis label
+* Y-axis label
+* Arbitrary annotations (`br.text`)
+* Cell text for heatmaps / confusion matrices
+
+### 3️⃣ Automatic layout correction
+
+`apply_bangla_layout()` balances left/right/bottom/top margins automatically.
+
+### 4️⃣ Seaborn integration
+
+Works naturally with Seaborn heatmaps.
+
+### 5️⃣ Complete test suite
+
+Covers:
+
+* Simple words
+* Complex conjuncts
+* Paragraphs
+* Line plots
+* Heatmaps
+* Confusion matrices
+* Before/after rendering comparison
+
+### 6️⃣ Fully Unicode-based
+
+No image hacks or external binaries.
+
+---
+
 ## 📦 Installation
 
-(Currently local — will publish to PyPI soon)
+(Currently for local use; PyPI version coming soon.)
 
 ```
 pip install PySide6
@@ -182,7 +180,7 @@ pip install -e .
 
 ---
 
-## 🧪 Usage Example — Line Plot
+## 🧪 Example — Line Plot
 
 ```
 import matplotlib.pyplot as plt
@@ -202,7 +200,7 @@ plt.show()
 
 ---
 
-## 🎨 Usage Example — Heatmap
+## 🎨 Example — Heatmap
 
 ```
 import seaborn as sns
@@ -238,47 +236,45 @@ plt.show()
 
 ## 🧩 API Overview
 
-### Titles & Labels
+### Title / Axis Labels
 
 * `set_bangla_title(ax, text, font_size=...)`
 * `set_bangla_xlabel(ax, text, font_size=...)`
 * `set_bangla_ylabel(ax, text, font_size=...)`
 
-### Text
+### General Text
 
 * `bangla_text(ax, x, y, text, coord="axes", ...)`
-  Drop-in replacement for `ax.text()` but properly shaped.
 
-### Heatmap Cells
+### Heatmap / Matrix Text
 
 * `add_bangla_in_cell(ax, row, col, text, rows, cols)`
 
 ### Layout
 
-* `apply_bangla_layout(fig, left=..., right=..., top=..., bottom=...)`
+* `apply_bangla_layout(fig, left=..., right=..., bottom=..., top=...)`
 
 ---
 
 ## 🏗 How It Works
 
-* Qt text engine (PySide6) → uses **HarfBuzz**
-* Shapes Bengali fully
-* Render to QImage
-* Convert to NumPy
-* Insert into Matplotlib with AnnotationBbox
-* Layout handled by figure metrics
+* Qt Text Engine (PySide6) → HarfBuzz
+* Renders shaped text into QImage
+* Converted to NumPy RGBA array
+* Inserted into Matplotlib with AnnotationBbox
+* Layout corrected via figure metrics
 
-A complete bypass of Matplotlib’s broken text pipeline.
+This bypasses Matplotlib’s broken Indic rendering pipeline entirely.
 
 ---
 
 ## 🧪 Test Suite
 
-The `tests/` folder includes:
+Included under `tests/`:
 
 * Simple words
-* Complex words
-* Paragraph rendering
+* Complex juktakkhor
+* Paragraphs
 * Line plot
 * Heatmap
 * Confusion matrix
@@ -288,22 +284,21 @@ The `tests/` folder includes:
 
 ## 📚 Roadmap
 
-* Publish to PyPI
-* Expand to Hindi/Tamil/Telugu/etc
-* Mixed Bengali + MathText
-* Deeper Matplotlib backend integration (Level B)
-* Submit to JOSS (Journal of Open Source Software)
+* PyPI release
+* Extend to Hindi / Tamil / Telugu / Malayalam
+* Mixed Bengali + MathText support
+* Level-B backend integration for direct native support
+* Submit paper to JOSS (Journal of Open Source Software)
 
 ---
 
 ## 📄 License
 
-MIT License.
+MIT License — free for personal, academic, and commercial use.
 
 ---
 
 ## ⭐ Acknowledgement
 
-This project enables clear, professional scientific visualization for **millions of Bengali speakers** — students, teachers, researchers, and engineers.
-
+This project aims to make scientific and data visualization more accessible for **millions of Bengali speakers**, helping students, educators, analysts, and researchers present data in their native language.
 
