@@ -165,7 +165,7 @@ Just install and use.
 
 | Before                                        | After                                       |
 | --------------------------------------------- | ------------------------------------------- |
-| ![before](assets/before_confusion_matrix.png) | ![after](assets/after_confusion_matrix.png) |
+| ![before](assets/confusion_matrix_before.png) | ![after](assets/confusion_matrix_after.png) |
 
 ---
 
