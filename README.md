@@ -1,4 +1,7 @@
 # 🇧🇩 bangla-render
+<p align="center">
+  <img src="assets/banner.png" alt="bangla-render: Bengali text rendering for Matplotlib & Seaborn" width="80%">
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/pypi/v/bangla-render?color=2b9348&label=Version&style=for-the-badge">
