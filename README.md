@@ -285,6 +285,11 @@ plt.show()
 * `apply_bangla_layout(fig, left=..., right=..., bottom=..., top=...)`
 
 ---
+## 📓 Example Notebook
+
+➡️ See our quick-start Jupyter notebook:  
+`examples/bangla_render_intro.ipynb`
+
 <a href="https://colab.research.google.com/github/mbs57/bangla-render/blob/main/examples/bangla_render_intro.ipynb" target="_blank">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
 </a>
