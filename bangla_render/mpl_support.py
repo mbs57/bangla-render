@@ -139,7 +139,7 @@ def set_bangla_ylabel(
     fontsize=None,
     font_size=None,
     zoom=0.40,
-    extra_pad=0.005,  # fraction of figure width
+    extra_pad=0.05,  # fraction of figure width
 ):
     """
     Bangla Y-axis label with automatic horizontal spacing based on
