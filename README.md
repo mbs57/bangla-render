@@ -4,16 +4,29 @@
 </p>
 
 <p align="center">
+
+  <!-- PyPI version -->
   <a href="https://pypi.org/project/bangla-render/">
-    <img src="https://img.shields.io/pypi/v/bangla-render.svg" alt="PyPI version">
+    <img src="https://img.shields.io/pypi/v/bangla-render?color=3fb950&label=PyPI&logo=pypi&logoColor=white" alt="PyPI version">
   </a>
+
+  <!-- Python versions (explicit >=3.8 badge) -->
   <a href="https://pypi.org/project/bangla-render/">
-    <img src="https://img.shields.io/pypi/pyversions/bangla-render.svg" alt="Python versions">
+    <img src="https://img.shields.io/badge/Python-%E2%89%A53.8-blue?logo=python&logoColor=white" alt="Python ≥3.8">
   </a>
+
+  <!-- License -->
   <a href="https://github.com/mbs57/bangla-render/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/mbs57/bangla-render.svg" alt="License">
+    <img src="https://img.shields.io/github/license/mbs57/bangla-render.svg?color=orange" alt="License">
   </a>
+
+  <!-- Author -->
+  <a href="https://github.com/mbs57">
+    <img src="https://img.shields.io/badge/Author-Mrinal%20Basak%20Shuvo-6f42c1.svg?logo=github" alt="Author">
+  </a>
+
 </p>
+
 
 
 
