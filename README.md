@@ -4,11 +4,17 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/pypi/v/bangla-render?color=2b9348&label=Version&style=for-the-badge">
-  <img src="https://img.shields.io/pypi/pyversions/bangla-render?color=1f78d1&label=Python&style=for-the-badge">
-  <img src="https://img.shields.io/github/license/mbs57/bangla-render?color=6c6c6c&label=License&style=for-the-badge">
-  <img src="https://img.shields.io/pypi/dm/bangla-render?color=ffb100&label=Downloads&style=for-the-badge">
+  <a href="https://pypi.org/project/bangla-render/">
+    <img src="https://img.shields.io/pypi/v/bangla-render.svg" alt="PyPI version">
+  </a>
+  <a href="https://pypi.org/project/bangla-render/">
+    <img src="https://img.shields.io/pypi/pyversions/bangla-render.svg" alt="Python versions">
+  </a>
+  <a href="https://github.com/mbs57/bangla-render/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/mbs57/bangla-render.svg" alt="License">
+  </a>
 </p>
+
 
 
 ### Bengali Text Rendering for Matplotlib & Seaborn (with full OpenType shaping)
