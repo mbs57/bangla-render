@@ -149,7 +149,7 @@ People relied on:
 
 ---
 
-## 🎯 Our Contributions
+## 🎯 My Contributions
 
 ### 1️⃣ First fully working Bengali renderer for Matplotlib
 
