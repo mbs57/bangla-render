@@ -290,7 +290,7 @@ plt.show()
 ➡️ See our quick-start Jupyter notebook:  
 `examples/bangla_render_intro.ipynb`
 
--->Runn it Locally.
+-->Run it Locally.
 
 ## 🏗 How It Works
 
