@@ -290,9 +290,7 @@ plt.show()
 ➡️ See our quick-start Jupyter notebook:  
 `examples/bangla_render_intro.ipynb`
 
-<a href="https://colab.research.google.com/github/mbs57/bangla-render/blob/main/examples/bangla_render_intro.ipynb" target="_blank">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab">
-</a>
+-->Runn it Locally.
 
 ## 🏗 How It Works
 
