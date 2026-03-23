@@ -160,6 +160,17 @@ Before **bangla-render**, there was:
 
 ---
 
+## 🚀 Try It Instantly
+
+Run the demo notebook directly in your browser — no setup needed:
+
+| Platform | Launch |
+|---|---|
+| Kaggle | [![Open in Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://kaggle.com/kernels/welcome?src=https://raw.githubusercontent.com/mbs57/bangla-render/main/examples/bangla_render_kaggle_colab_demo.ipynb) |
+| Google Colab | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/mbs57/bangla-render/blob/main/examples/bangla_render_kaggle_colab_demo.ipynb) |
+
+---
+
 ## 📦 Installation
 
 ```bash
