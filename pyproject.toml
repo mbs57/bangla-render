@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "bangla-render"
-version = "0.2.0"
+version = "0.2.1"
 description = "Bengali text rendering for Matplotlib & Seaborn using Qt/HarfBuzz"
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.8"
