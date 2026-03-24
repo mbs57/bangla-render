@@ -247,9 +247,6 @@ class BanglaLayoutManager:
         self.items.append(it); ax.set_ylabel("")
         self.update_layout(); return it
 
-    def add_suptitle(self, fig, text, **kw):
-        return None  # silent stub
-
     def add_xticks(self, ax, positions, labels, **kw):
         self._rm_tick("xticks", ax)
         g = ManagedTickGroup(
